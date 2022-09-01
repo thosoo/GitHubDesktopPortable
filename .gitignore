@@ -9,3 +9,6 @@ Work
 
 # Ignore log
 pac_installer_log.ini
+
+*.paf.exe
+*.exe
