@@ -44,9 +44,9 @@ else{
         $installer | Out-IniFile -Force -Encoding ASCII -Pretty -FilePath ".\GitHubDesktopPortable\App\AppInfo\installer.ini"
 
         #appinfo.ini
-        $appinfo["Control"]["BaseAppID"]=-join("%BASELAUNCHERPATH%\App\",$asset1.name.replace('.zip',''),"\prusa-slicer.exe")
-        $appinfo["Control"]["BaseAppID64"]=-join("%BASELAUNCHERPATH%\App\",$asset2.name.replace('.zip',''),"\prusa-slicer.exe")
-        $appinfo | Out-IniFile -Force -Encoding ASCII -FilePath ".\GitHubDesktopPortable\App\AppInfo\appinfo.ini"
+        #$appinfo["Control"]["BaseAppID"]=-join("%BASELAUNCHERPATH%\App\",$asset1.name.replace('.zip',''),"\prusa-slicer.exe")
+        #$appinfo["Control"]["BaseAppID64"]=-join("%BASELAUNCHERPATH%\App\",$asset2.name.replace('.zip',''),"\prusa-slicer.exe")
+        #$appinfo | Out-IniFile -Force -Encoding ASCII -FilePath ".\GitHubDesktopPortable\App\AppInfo\appinfo.ini"
 
         # launcher.ini
         ((Get-Content -path ".\GitHubDesktopPortable\App\AppInfo\Launcher\GitHubDesktopPortable.ini" -Raw) -replace 'app-\d{1,5}.\d{1,5}.\d{1,5}',"app-$tag2") | Set-Content -Path ".\GitHubDesktopPortable\App\AppInfo\Launcher\GitHubDesktopPortable.ini"
