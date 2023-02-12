@@ -6,7 +6,12 @@ try {
 }
 $repoName = "desktop/desktop"
 $releasesUri = "https://api.github.com/repos/$repoName/tags"
-$tag = (Invoke-WebRequest $releasesUri | ConvertFrom-Json).name[0]
+try { $tag = (Invoke-WebRequest $releasesUri | ConvertFrom-Json).name[0] }
+catch {
+  Write-Host "Error while pulling API."
+  echo "SHOULD_COMMIT=no" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append
+  break
+}
 $tag2 = $tag.replace('release-','') #-Replace '-.*',''
 Write-Host $tag2
 if ($tag2 -match "alpha")
